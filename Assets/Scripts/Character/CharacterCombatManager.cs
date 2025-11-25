@@ -6,6 +6,7 @@ namespace SG
 {
     public class CharacterCombatManager : MonoBehaviour
     {
+        public AttackType currentAttackType;
         protected virtual void Awake()
         {
             // Initialize any combat-related components or variables here

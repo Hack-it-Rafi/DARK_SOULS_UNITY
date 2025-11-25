@@ -5847,6 +5847,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: World Action Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5060499417360454075, guid: 87b0c2821399ea04b9ac89ef20b0eb35,
+        type: 3}
+      propertyPath: weaponItemActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060499417360454075, guid: 87b0c2821399ea04b9ac89ef20b0eb35,
+        type: 3}
+      propertyPath: weaponItemActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d895b81ce49b7e478a0b33acb676020,
+        type: 2}
     - target: {fileID: 8939220566744208470, guid: 87b0c2821399ea04b9ac89ef20b0eb35,
         type: 3}
       propertyPath: m_LocalPosition.x

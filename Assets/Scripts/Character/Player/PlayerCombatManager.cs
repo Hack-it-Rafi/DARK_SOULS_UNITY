@@ -9,6 +9,7 @@ namespace SG
     {
         PlayerManager player;
         public WeaponItem currentWeaponBeingUsed;
+        
 
         protected override void Awake()
         {
@@ -24,6 +25,31 @@ namespace SG
 
                 player.playerNetworkManager.NotifyTheServerOfWeaponActionServerRPC(NetworkManager.Singleton.LocalClientId, weaponAction.actionID, weaponPerformingAction.itemID);
             }
+        }
+
+        public virtual void DrainStaminaBasedOnAttack()
+        {
+            if(!player.IsOwner)
+                return;
+            
+            if(currentWeaponBeingUsed == null)
+                return;
+
+            float staminaDeducted = 0;
+
+            switch(currentAttackType)
+            {
+                case AttackType.LightAttack01:
+                    staminaDeducted = currentWeaponBeingUsed.baseStaminaCost * currentWeaponBeingUsed.lightAttackStaminaCostMultiplier;
+                    break;
+                default:
+                    staminaDeducted = 0;
+                    break;
+            }
+            Debug.Log("Stamina Deducted: " + staminaDeducted);
+
+            player.playerNetworkManager.currentStamina.Value -= Mathf.RoundToInt(staminaDeducted);
+            
         }
     }
 }

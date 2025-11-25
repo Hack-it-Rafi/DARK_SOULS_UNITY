@@ -27,12 +27,14 @@ namespace SG
         public float poiseDamage = 10f;
 
         //Weapon Modifiers
-        //Light Attack Modifier
+        [Header("Attack Modifiers")]
+        public float light_Attack_01_Modifier = 1.1f;
         //Heavy Attack Modifier
         //Critical Attack Modifier
 
-        [Header("Stamina Cost")]
+        [Header("Stamina Cost Modifiers")]
         public int baseStaminaCost = 20;
+        public float lightAttackStaminaCostMultiplier = 0.9f;
 
 
         [Header("Actions")]

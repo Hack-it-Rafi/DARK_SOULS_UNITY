@@ -7,7 +7,7 @@ namespace SG
     public class DamageCollider : MonoBehaviour
     {
         [Header("Collider")]
-        protected Collider damageCollider;
+        [SerializeField] protected Collider damageCollider;
         [Header("Damage")]
         public float physicalDamage = 0; //(Standard, Strike, Slash, Pierce Damage)
         public float magicDamage = 0;
@@ -16,15 +16,19 @@ namespace SG
         public float holyDamage = 0;
 
         [Header("Contact Point")]
-        private Vector3 contactPoint;
+        protected Vector3 contactPoint;
 
         [Header("Character Damaged")]
         protected List<CharacterManager> charactersDamaged = new List<CharacterManager>();
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void Awake()
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
-            {
+        }
+
+        protected virtual void OnTriggerEnter(Collider other)
+        {
+            // if (other.gameObject.layer == LayerMask.NameToLayer("Character"))
+            // {
                 CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
 
 
@@ -35,7 +39,7 @@ namespace SG
 
                     DamageTarget(damageTarget);
                 }
-            }
+            // }
         }
 
         protected virtual void DamageTarget(CharacterManager damageTarget)

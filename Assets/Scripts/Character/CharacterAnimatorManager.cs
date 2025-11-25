@@ -25,7 +25,7 @@ namespace SG
             float horizontalAmount = horizontalMovement;
             float verticalAmount = verticalMovement;
 
-            if(isSprinting)
+            if (isSprinting)
             {
                 verticalAmount = 2;
             }
@@ -80,7 +80,7 @@ namespace SG
             // character.animator.SetFloat("Horizontal", snappedHorizontal);
             // character.animator.SetFloat("Vertical", snappedVertical);
 
-            
+
 
         }
 
@@ -92,15 +92,28 @@ namespace SG
             }
             character.applyRootMotion = applyRootMotion;
             character.animator.CrossFade(targetAnimation, 0.2f);
-
-            //Can be used to disable the animator component
-            //for example, when player get damaged, and begin to play the animation
-            //we can disable the animator component to prevent the player from moving
             character.isPerformingAction = isPerformingAction;
             character.canRotate = canRotate;
             character.canMove = canMove;
 
-            character.characterNetworkManager.NotifyTheServerOfActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
+            character.characterNetworkManager.NotifyTheServerOfAttackActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
+
+        }
+
+        public virtual void PlayTargetAttackActionAnimation(AttackType attackType, string targetAnimation, bool isPerformingAction, bool applyRootMotion = true, bool canRotate = false, bool canMove = false)
+        {
+            if (targetAnimation == "Swap_Right_Weapon_01")
+            {
+                Debug.Log("Swap_Right_Weapon_01 animation ");
+            }
+            character.characterCombatManager.currentAttackType = attackType;
+            character.applyRootMotion = applyRootMotion;
+            character.animator.CrossFade(targetAnimation, 0.2f);
+            character.isPerformingAction = isPerformingAction;
+            character.canRotate = canRotate;
+            character.canMove = canMove;
+
+            character.characterNetworkManager.NotifyTheServerOfAttackActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
 
         }
     }
