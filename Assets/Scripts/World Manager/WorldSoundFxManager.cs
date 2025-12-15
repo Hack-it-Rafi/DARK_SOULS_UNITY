@@ -9,7 +9,7 @@ namespace SG
         public static WorldSoundFxManager instance;
 
         [Header("Damage Sound Effects")]
-        public AudioClip[] pysicalDamageSFX;
+        public AudioClip[] physicalDamageSFX;
 
         [Header("Action Sound Effects")]
         public AudioClip rollSFX;

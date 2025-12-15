@@ -43,9 +43,14 @@ namespace SG
             base.ProcessEffect(character);
 
             if (character.isDead.Value)
+            {
+                Debug.Log("Character is already dead, no need to process TakeDamageEffect.");
                 return;
+            }
+                
 
             CalculateDamage(character);
+            PlayDirectionalBasedDamageAnimation(character);
 
             PlayDamageVFX(character);
             PlayDamageSFX(character);
@@ -82,9 +87,49 @@ namespace SG
 
         private void PlayDamageSFX(CharacterManager character)
         {
-            AudioClip pyhsicalDamageSFX = WorldSoundFxManager.instance.ChooseRandomSFXFromArray(WorldSoundFxManager.instance.pysicalDamageSFX);
+            AudioClip physicalDamageSFX = WorldSoundFxManager.instance.ChooseRandomSFXFromArray(WorldSoundFxManager.instance.physicalDamageSFX);
 
-            character.characterSoundFxManager.PlaySoundFX(pyhsicalDamageSFX);
+            character.characterSoundFxManager.PlaySoundFX(physicalDamageSFX);
+        }
+
+        private void PlayDirectionalBasedDamageAnimation(CharacterManager character)
+        {
+            if(!character.IsOwner)
+                return;
+
+            poiseIsBroken = true;
+
+            if (angleHitFrom >= 145 && angleHitFrom <= 180)
+            {
+                damageAnimation = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.forward_Medium_Damage);
+
+            }
+            else if (angleHitFrom <= -145 && angleHitFrom >= -180)
+            {
+                damageAnimation = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.forward_Medium_Damage);
+
+            }
+            else if (angleHitFrom >= -45 && angleHitFrom <= 45)
+            {
+                damageAnimation = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.backward_Medium_Damage);
+
+            }
+            else if (angleHitFrom >= -144 && angleHitFrom <= -45)
+            {
+                damageAnimation = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.left_Medium_Damage);
+
+            }
+            else if (angleHitFrom >= 45 && angleHitFrom <= 144)
+            {
+                damageAnimation = character.characterAnimatorManager.GetRandomAnimationFromList(character.characterAnimatorManager.right_Medium_Damage);
+
+            }
+
+            if(poiseIsBroken)
+            {
+                character.characterAnimatorManager.LastDamageAnimationPlayed = damageAnimation;
+                character.characterAnimatorManager.PlayTargetActionAnimation(damageAnimation, true);
+            }
         }
 
     }
