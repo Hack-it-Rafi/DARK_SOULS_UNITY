@@ -8,6 +8,9 @@ namespace SG
     {
         public static WorldSoundFxManager instance;
 
+        [Header("Damage Sound Effects")]
+        public AudioClip[] pysicalDamageSFX;
+
         [Header("Action Sound Effects")]
         public AudioClip rollSFX;
 
@@ -28,6 +31,11 @@ namespace SG
             DontDestroyOnLoad(gameObject);
         }
         
+        public AudioClip ChooseRandomSFXFromArray(AudioClip[] array)
+        {
+            int index = Random.Range(0, array.Length);
+            return array[index];
+        }
         
     }
 }

@@ -33,7 +33,7 @@ namespace SG
             DontDestroyOnLoad(gameObject);
         }
 
-        private void update()
+        private void Update()
         {
             if (startGameAsClient)
             {

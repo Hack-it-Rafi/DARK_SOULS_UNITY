@@ -46,6 +46,9 @@ namespace SG
                 return;
 
             CalculateDamage(character);
+
+            PlayDamageVFX(character);
+            PlayDamageSFX(character);
         }
 
         private void CalculateDamage(CharacterManager character)
@@ -66,9 +69,22 @@ namespace SG
                 finalDamageDealt = 1;
             }
 
-            Debug.Log($"Final Damage Dealt:"+ finalDamageDealt);
+            Debug.Log($"Final Damage Dealt:" + finalDamageDealt);
 
             character.characterNetworkManager.currentHealth.Value -= finalDamageDealt;
+        }
+
+        private void PlayDamageVFX(CharacterManager character)
+        {
+            character.characterEffectsManager.PlayBloodSplatterVFX(contactPoint);
+
+        }
+
+        private void PlayDamageSFX(CharacterManager character)
+        {
+            AudioClip pyhsicalDamageSFX = WorldSoundFxManager.instance.ChooseRandomSFXFromArray(WorldSoundFxManager.instance.pysicalDamageSFX);
+
+            character.characterSoundFxManager.PlaySoundFX(pyhsicalDamageSFX);
         }
 
     }

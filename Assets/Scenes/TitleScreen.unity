@@ -5979,8 +5979,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7971294994463478147, guid: b74b119d1f0f59e42bc5c4507c2c0a4f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4819026534896638926}
   m_SourcePrefab: {fileID: 100100000, guid: b74b119d1f0f59e42bc5c4507c2c0a4f, type: 3}
+--- !u!1 &4819026534896638925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7971294994463478147, guid: b74b119d1f0f59e42bc5c4507c2c0a4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4819026534896638924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4819026534896638926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4819026534896638925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbaa8d371480e1044af90fff16772820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
 --- !u!222 &5421009133870358876
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6055,6 +6078,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4768604793526342441, guid: 018a24673c58f3844b94bb6e9d4fb948,
+        type: 3}
+      propertyPath: pysicalDamageSFX.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768604793526342441, guid: 018a24673c58f3844b94bb6e9d4fb948,
+        type: 3}
+      propertyPath: pysicalDamageSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8fc9c2f2d8155f24e9c94c7aabf1f43c, type: 3}
+    - target: {fileID: 4768604793526342441, guid: 018a24673c58f3844b94bb6e9d4fb948,
+        type: 3}
+      propertyPath: pysicalDamageSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d67e83d0a67c3654c8aa4f072a21b07e, type: 3}
+    - target: {fileID: 4768604793526342441, guid: 018a24673c58f3844b94bb6e9d4fb948,
+        type: 3}
+      propertyPath: pysicalDamageSFX.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1e8605f2d3f42c7499f9647126477af6, type: 3}
     - target: {fileID: 5023027027435398235, guid: 018a24673c58f3844b94bb6e9d4fb948,
         type: 3}
       propertyPath: m_Name
